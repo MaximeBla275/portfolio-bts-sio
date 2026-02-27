@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 70" fill="none">
+  <rect width="220" height="70" fill="transparent"/>
+  <!-- Carré rouge XEFI -->
+  <rect x="0" y="5" width="60" height="60" fill="#E30613"/>
+  <text x="30" y="50" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="38" fill="white">X</text>
+  <!-- Texte EFI noir -->
+  <text x="75" y="52" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="44" fill="#1a1a1a" letter-spacing="2">EFI</text>
+</svg>

@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── LIGHT MODE ─── */
+:root {
+  --cream:  #f5f0e8;
+  --ink:    #0d0d0d;
+  --accent: #c8371a;
+  --muted:  #8a8075;
+  --border: #e0d9ce;
+  --card:   #faf7f2;
+}
+
+/* ─── DARK MODE ─── */
+[data-theme="dark"] {
+  --cream:  #0f0f0f;
+  --ink:    #f0ece4;
+  --accent: #e84c2b;
+  --muted:  #888888;
+  --border: #2a2a2a;
+  --card:   #181818;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--cream);
+  color: var(--ink);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body {
+  font-family: 'DM Mono', monospace;
+  background: var(--cream);
+  overflow-x: hidden;
+}
+
+/* Page transitions */
+.page-enter-active, .page-leave-active { transition: all 0.3s ease; }
+.page-enter-from { opacity: 0; transform: translateY(16px); }
+.page-leave-to { opacity: 0; }
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 20s linear infinite; white-space: nowrap; }
+
+/* Underline hover */
+.link-hover { position: relative; display: inline-block; }
+.link-hover::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 1px; background: var(--accent); transition: width 0.3s ease;
+}
+.link-hover:hover::after { width: 100%; }
+
+/* Scroll reveal */
+.stagger > * { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.stagger > *.revealed { opacity: 1; transform: translateY(0); }

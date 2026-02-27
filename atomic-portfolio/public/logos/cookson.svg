@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70" fill="none">
+  <rect width="260" height="70" fill="transparent"/>
+  <!-- Barre dorée gauche -->
+  <rect x="0" y="10" width="6" height="50" fill="#C9922A"/>
+  <!-- COOKSON -->
+  <text x="18" y="32" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#1a1a1a" letter-spacing="3">COOKSON</text>
+  <!-- Tiret séparateur or -->
+  <line x1="18" y1="38" x2="242" y2="38" stroke="#C9922A" stroke-width="1"/>
+  <!-- CLAL en or -->
+  <text x="18" y="58" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="18" fill="#C9922A" letter-spacing="8">CLAL</text>
+</svg>
