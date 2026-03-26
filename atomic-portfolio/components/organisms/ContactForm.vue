@@ -41,8 +41,6 @@
 import BaseInput  from '@/components/atoms/BaseInput.vue'
 import BaseButton from '@/components/atoms/BaseButton.vue'
 
-const FORMSPREE_ID = 'VOTRE_ID_FORMSPREE'
-
 const sent    = ref(false)
 const loading = ref(false)
 const error   = ref('')
@@ -50,28 +48,21 @@ const form    = reactive({ name: '', email: '', objet: '', message: '' })
 const objets  = ['Recrutement', 'Stage', 'Question sur un projet', 'Autre']
 
 async function handleSubmit() {
-  if (FORMSPREE_ID === 'VOTRE_ID_FORMSPREE') {
-    sent.value = true
-    setTimeout(() => {
-      sent.value = false
-      Object.assign(form, { name: '', email: '', objet: '', message: '' })
-    }, 4000)
-    return
-  }
-
   loading.value = true
   error.value   = ''
 
   try {
-    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body:    JSON.stringify({
-        name:    form.name,
-        email:   form.email,
-        objet:   form.objet || 'Non précisé',
-        message: form.message,
-      }),
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        objet: form.objet || 'Non précisé',
+        message: form.message
+      })
     })
 
     if (res.ok) {
@@ -79,7 +70,7 @@ async function handleSubmit() {
       Object.assign(form, { name: '', email: '', objet: '', message: '' })
       setTimeout(() => { sent.value = false }, 6000)
     } else {
-      error.value = 'Erreur lors de l\'envoi. Écris directement à maxime.blanco275@gmail.com'
+      error.value = 'Erreur lors de l’envoi. Écris directement à maxime.blanco275@gmail.com'
     }
   } catch {
     error.value = 'Connexion impossible. Écris directement à maxime.blanco275@gmail.com'
