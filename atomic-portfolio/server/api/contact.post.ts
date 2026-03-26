@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  const { name, email, message } = body
+  const { name, email, objet, message } = body
 
   if (!name || !email || !message) {
     return { error: 'Missing fields' }
@@ -17,9 +17,10 @@ export default defineEventHandler(async (event) => {
     subject: `Nouveau message de ${name}`,
     html: `
       <h2>Nouveau message</h2>
-      <p><b>Nom:</b> ${name}</p>
-      <p><b>Email:</b> ${email}</p>
-      <p><b>Message:</b><br>${message}</p>
+      <p><b>Nom :</b> ${name}</p>
+      <p><b>Email :</b> ${email}</p>
+      <p><b>Objet :</b> ${objet || 'Non précisé'}</p>
+      <p><b>Message :</b><br>${message}</p>
     `
   })
 
